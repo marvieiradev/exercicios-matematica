@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Verifica se o número é primo</h1>
+    <input id="num" type="number" min="0" placeholder="Digite um número">
+    <button onclick="calculaPrimo()">Verificar</button>
+    <h3 id="resultado"></h3>
+    <script>
+        var primo;
+        var resultado
+
+        function calculaPrimo() {
+            var num = Number(document.getElementById("num").value);
+            primo = true
+            for (var i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    primo = false
+                }
+            }
+            resultado = primo && num > 1 ? "O número " + num + " é primo!" : "O número " + num + " não é primo!";
+            document.getElementById("resultado").innerText = resultado;
+        }
+    </script>
+</body>
+
+</html>
