@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo Milhão</title>
+</head>
+
+<body>
+    <div>
+        <h1>Calculo do Milhão</h1>
+        <input id="v_inicial" type="number" min="0" placeholder="Digite o valor inicial">
+        <input id="v_mensal" type="number" min="0" placeholder="Digite o valor mensal">
+        <input id="taxa" type="number" min="0" placeholder="Digite a taxa em %">
+        <button onclick="calculaTempo()">Calcular</button>
+        <h3 id="resultado"></h3>
+    </div>
+
+
+    <script>
+
+        var meta = 1000000;
+
+        function calculaTempo() {
+            var v_inicial = Number(document.getElementById("v_inicial").value);
+            var v_mensal = Number(document.getElementById("v_mensal").value);
+            var taxa = Number(document.getElementById("taxa").value);
+            var v_total = v_inicial;
+            var meses = 0;
+
+            if (v_inicial < 0 || v_mensal < 0 || taxa <= 0) {
+                document.getElementById("resultado").innerText = "Preencha os campos corretamente";
+            } else {
+                while (v_total < meta) {
+                    v_total += (v_total * (taxa / 100)) + v_mensal;
+                    meses += 1;
+                }
+                document.getElementById("resultado").innerText = "Um milhão em aproximadamente: " + Math.round(meses / 12) + " anos!";
+            }
+        }
+    </script>
+</body>
+
+</html>
