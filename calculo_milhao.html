@@ -28,6 +28,7 @@
             var taxa = Number(document.getElementById("taxa").value);
             var v_total = v_inicial;
             var meses = 0;
+            var valores = [];
 
             if (v_inicial < 0 || v_mensal < 0 || taxa <= 0) {
                 document.getElementById("resultado").innerText = "Preencha os campos corretamente";
@@ -35,7 +36,13 @@
                 while (v_total < meta) {
                     v_total += (v_total * (taxa / 100)) + v_mensal;
                     meses += 1;
+                    valores.push(v_total);
+
                 }
+                for (i = 0; i < meses; i += 12) {
+                    console.log("Ano " + (i / 12) + ": " + Math.round(valores[i]))
+                }
+                console.log("Fim do Prazo: " + Math.round(valores[valores.length - 1]))
                 document.getElementById("resultado").innerText = "Um milhão em aproximadamente: " + Math.round(meses / 12) + " anos!";
             }
         }
